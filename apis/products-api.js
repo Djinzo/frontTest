@@ -1,7 +1,7 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3000";//to be moved to a config file
 
 async function getProducts() {
-  const response = await fetch("http://localhost:3000/products");
+  const response = await fetch(url+"/products");
   const products = await response.json();
   return products;
 }
@@ -9,7 +9,7 @@ async function getProducts() {
 
 async function postProducts(productData) {
   try {
-    const response = await fetch("http://localhost:3000/products", {
+    const response = await fetch(url+"/products", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ async function postProducts(productData) {
 
 async function deleteProductById(productId) {
   try {
-    const response = await fetch(`http://localhost:3000/products/${productId}`, {
+    const response = await fetch(url+`/products/${productId}`, {
       method: 'DELETE'
     });
     if (!response.ok) {
@@ -40,7 +40,7 @@ async function deleteProductById(productId) {
 async function editProductById(productId, newTitle) {
   console.log(newTitle)
   try {
-    const response = await fetch(`http://localhost:3000/products/${productId}`, {
+    const response = await fetch(url+`/products/${productId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -53,5 +53,22 @@ async function editProductById(productId, newTitle) {
     return await response.json();
   } catch (error) {
     console.error("Error editing product:", error);
+  }
+}
+
+
+
+async function searchProduct(searchTerm) {
+  try {
+    const response = await fetch(`${url}/Products?search=${searchTerm}`);
+    if (!response.ok) {
+      throw new Error(
+        `Error searching stock operation: ${response.statusText}`
+      );
+    }
+    const stockOperations = await response.json();
+    return stockOperations;
+  } catch (error) {
+    console.error("Error searching stock operation:", error);
   }
 }

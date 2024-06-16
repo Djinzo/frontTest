@@ -83,8 +83,8 @@
 
         <span class="text">Opérations Ventes</span>
         <div class="head">
-          <input type="search" class="search" placeholder="Search...." />
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="search-sell-operation" type="search" class="search" placeholder="Search...." />
+          <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplaySellOperations()"></i>
         </div>
       </div>
       <div class="body">
@@ -105,32 +105,29 @@
             </div>
             <div class="down">
                 <h3>Produit</h3>
-                <table>
+                <table id="productStockTabel">
                     <tbody>
-                        <tr>
-                            <td>iphone 13</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>cle usb</td>
-                            <td>50</td>
-                        </tr>
+                      
                     </tbody>
                 </table>
                 <div class="inputs">
-                    <input class="input1" type="text" id="produitNom" placeholder="Choisir un Produit">
+                    <select class="input1" type="text" id="produitNom">
+                      <option value="" disabled selected>Choisir un produit</option>
+                    </select>
                     <input class="input2" type="number" id="produitQuantity" min="0" placeholder="Saisir la Quantité">
+                    <button class="confirm" id="addproductToStockList" onclick="addProductToStockList()">ajouter</button>
+
                 </div>
             </div>
 
             <div class="btn">
                 <button class="cancel" id="cancelButton" onclick="closevent()">Annuler</button>
-                <button class="confirm" id="confirmButton" onclick="confirmvent()">Confirmer</button>
+                <button class="confirm" id="confirmButton" onclick="addSellOperation()">Confirmer</button>
             </div>
         </div>
     </div>
 
-        <table class="tab">
+        <table class="tab" id="sell-operation-table">
           <tr>
             <th>#</th>
             <th>Fournissuer</th>
@@ -138,187 +135,11 @@
             <th>Nombre Produits</th>
             <th></th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Hassan</td>
-            <td>01/01/2022</td>
-            <td>230 Produits</td>
-            <td>
-                <i onclick="editProduct()" class="fa fa-eye" style="cursor: pointer"></i>
-                <div class="editPopup" id="editPopup">
-                    <div class="popupContent">
-                        <h2>Nouvelle Opération vente</h2>
-                        <div class="inputFields">
-                            <div class="name1">
-                                <label for="nom">Nom Client</label>
-                                <input type="text" id="nom">
-                            </div>
-                            <div class="date1">
-                                <label for="date">Date Livraison</label>
-                                <input type="date" id="date" class="dateInput">
-                            </div>
-                        </div>
-                        <div class="down">
-                            <h3>Produit</h3>
-                            <table class="productTable">
-                                <tbody>
-                                    <tr>
-                                        <td>iphone 13</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>cle usb</td>
-                                        <td>50</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeEditPopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Enregistrer</button>
-                        </div>
-                    </div>
-                </div>
-            
-                <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
-                <div class="deletePopup" id="deletePopup">
-                    <div class="popupContent">
-                        <h2>Supprimer Opération Stock</h2>
-                        <p>Vous êtes entrain de supprimer l'opération de stock de <span style="color: red;">Electro Derb 4lef</span> le <span style="color: red;">01/05/2024</span>.</p>
-                        <p>La suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.</p>
-                        <p>Êtes-vous sûr de vouloir supprimer cette opération?</p>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeDeletePopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-
-              
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Hamza</td>
-            <td>20/20/2022</td>
-            <td class="space">30 Produits</td>
-            <td>
-                <i onclick="editProduct()" class="fa fa-eye" style="cursor: pointer"></i>
-                <div class="editPopup" id="editPopup">
-                    <div class="popupContent">
-                        <h2>Nouvelle Opération vente</h2>
-                        <div class="inputFields">
-                            <div class="name1">
-                                <label for="nom">Nom Client</label>
-                                <input type="text" id="nom">
-                            </div>
-                            <div class="date1">
-                                <label for="date">Date Livraison</label>
-                                <input type="date" id="date" class="dateInput">
-                            </div>
-                        </div>
-                        <div class="down">
-                            <h3>Produit</h3>
-                            <table class="productTable">
-                                <tbody>
-                                    <tr>
-                                        <td>iphone 13</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>cle usb</td>
-                                        <td>50</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeEditPopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Enregistrer</button>
-                        </div>
-                    </div>
-                </div>
-            
-                <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
-                <div class="deletePopup" id="deletePopup">
-                    <div class="popupContent">
-                        <h2>Supprimer Opération Stock</h2>
-                        <p>Vous êtes entrain de supprimer l'opération de stock de <span style="color: red;">Electro Derb 4lef</span> le <span style="color: red;">01/05/2024</span>.</p>
-                        <p>La suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.</p>
-                        <p>Êtes-vous sûr de vouloir supprimer cette opération?</p>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeDeletePopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-
-           
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>hicham</td>
-            <td>30/20/2023</td>
-            <td class="space">300 Produits</td>
-            <td>
-                <i onclick="editProduct()" class="fa fa-eye" style="cursor: pointer"></i>
-                <div class="editPopup" id="editPopup">
-                    <div class="popupContent">
-                        <h2>Nouvelle Opération vente</h2>
-                        <div class="inputFields">
-                            <div class="name1">
-                                <label for="nom">Nom Client</label>
-                                <input type="text" id="nom">
-                            </div>
-                            <div class="date1">
-                                <label for="date">Date Livraison</label>
-                                <input type="date" id="date" class="dateInput">
-                            </div>
-                        </div>
-                        <div class="down">
-                            <h3>Produit</h3>
-                            <table class="productTable">
-                                <tbody>
-                                    <tr>
-                                        <td>iphone 13</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>cle usb</td>
-                                        <td>50</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeEditPopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Enregistrer</button>
-                        </div>
-                    </div>
-                </div>
-            
-                <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
-                <div class="deletePopup" id="deletePopup">
-                    <div class="popupContent">
-                        <h2>Supprimer Opération Stock</h2>
-                        <p>Vous êtes entrain de supprimer l'opération de stock de <span style="color: red;">Electro Derb 4lef</span> le <span style="color: red;">01/05/2024</span>.</p>
-                        <p>La suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.</p>
-                        <p>Êtes-vous sûr de vouloir supprimer cette opération?</p>
-                        <div class="btns">
-                            <button class="cancel" onclick="closeDeletePopup()">Annuler</button>
-                            <button class="delete" onclick="confirmDelete()">Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-
-           
-            </td>
-          </tr>
         </table>
       </div>
     </section>
-
+    <script src="/apis/products-api.js"></script>
+    <script src="/apis/vents-api.js"></script>
     <script src="vent.js"></script>
   </body>
 </html>

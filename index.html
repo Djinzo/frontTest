@@ -76,8 +76,8 @@
         <i class="bx bx-menu"></i>
         <span class="text">Produits</span>
         <div class="head">
-          <input type="search" class="search" placeholder="Search...." />
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="search-product" type="search" class="search" placeholder="Search...." />
+          <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplaySellOperations()"></i>
         </div>
       </div>
       <div class="body">
@@ -208,8 +208,7 @@
   
    
 
-    <script src="api.js"></script>
-    <script src="products-api.js"></script>
+    <script src="/apis/products-api.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
