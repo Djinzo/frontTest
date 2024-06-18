@@ -40,11 +40,9 @@ async function deleteSellOperation(sellOperationId) {
   }
 }
 
-async function searchSellOperation(searchTerm) {
+async function searchSellOperationApi(searchTerm) {
   try {
-    const response = await fetch(
-      `${url}/sell-operations?search=${searchTerm}`
-    );
+    const response = await fetch(`${url}/sell-operations?search=${searchTerm}`);
     if (!response.ok) {
       throw new Error(
         `Error searching stock operation: ${response.statusText}`

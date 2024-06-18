@@ -77,7 +77,7 @@
         <span class="text">Produits</span>
         <div class="head">
           <input id="search-product" type="search" class="search" placeholder="Search...." />
-          <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplaySellOperations()"></i>
+          <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
         </div>
       </div>
       <div class="body">
@@ -87,8 +87,9 @@
      <div class="popupContant">
          <h2>nouveau produit</h2>
          <input type="text" placeholder="nom du produit" id="productName">
+         <span class="error" id="error"></span>
          <div class="btn">
-         <button class="confirm" id="confirmButton" onclick="addProductFromInput()">confirm</button>
+         <button class="confirm" id="confirmButton" onclick="addProduct()">confirm</button>
          <button class="cancel" id="cancelButton">cancel</button>
      </div>
     </div>
@@ -208,7 +209,11 @@
   
    
 
-    <script src="/apis/products-api.js"></script>
+    <script src="/apis/products.api.js"></script>
+    <script src="/rander/product.render.js"></script>
+    <script src="/validators/product.validator.js"></script>
+    <script src="/services/product.service.js"></script>
+   
     <script src="index.js"></script>
   </body>
 </html>

@@ -66,13 +66,13 @@
       <span class="text">Operations Stock</span>
       <div class="head">
         <input type="search" id="search-stock-operation" class="search" placeholder="Search...." />
-        <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplayStockOperations()" ></i>
+        <i class="fa-solid fa-magnifying-glass" onclick="searchstockOperation()" ></i>
       </div>
     </div>
     <div class="body">
-      <button id="openstock" class="add" onclick="alertAddToStock()">Nouveau Operations</button>
+      <button id="openstock" class="add" onclick="alertAddStockOperations()">Nouveau Operations</button>
 
-      <div class="stock">
+      <div class="stock" id="add-stock-popup">
         <div class="stockContant">
           <h3>Nouvelle Opération Stock</h3>
           <div class="up">
@@ -97,13 +97,14 @@
                 <option value="" disabled selected>Choisir un produit</option>
               </select>
               <input class="input2" type="number" id="produitQuantity" min="0" placeholder="Saisir la quantité">
-              <button class="confirm" id="addproductToStockList" onclick="addProductToStockList()">ajouter</button>
+              <button class="confirm" id="addproductToStockList" onclick="addProdactToTable()">ajouter</button>
             </div>
+              <span id="error" class="error"></span>
           </div>
 
           <div class="btn">
-            <button class="cancel" id="cancelButton">cancel</button>
-            <button class="confirm" id="confirmButton" onclick="addStockOperation()">confirm</button>
+            <button class="cancel" id="cancelButton" onclick="closeAleartAddStockOperations()">cancel</button>
+            <button class="confirm" id="confirmButton" onclick="addstockOperation()">confirm</button>
 
           </div>
         </div>
@@ -123,8 +124,11 @@
 
 
 
-  <script src="/apis/products-api.js"></script>
-  <script src="/apis/stocks-api.js"></script>
+  <script src="/apis/products.api.js"></script>
+  <script src="/apis/stocks.api.js"></script>
+  <script src="/rander/stock.render.js"></script>
+  <script src="/validators/stock.validator.js"></script>
+  <script src="/services/stock.service.js"></script>
   <script src="stock.js"></script>
 </body>
 

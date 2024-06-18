@@ -37,7 +37,7 @@ async function deleteProductById(productId) {
   }
 }
 
-async function editProductById(productId, newTitle) {
+async function putProductById(productId, newTitle) {
   console.log(newTitle)
   try {
     const response = await fetch(url+`/products/${productId}`, {
@@ -58,7 +58,7 @@ async function editProductById(productId, newTitle) {
 
 
 
-async function searchProduct(searchTerm) {
+async function searchProductByTitle(searchTerm) {
   try {
     const response = await fetch(`${url}/Products?search=${searchTerm}`);
     if (!response.ok) {

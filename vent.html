@@ -84,13 +84,13 @@
         <span class="text">Opérations Ventes</span>
         <div class="head">
           <input id="search-sell-operation" type="search" class="search" placeholder="Search...." />
-          <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplaySellOperations()"></i>
+          <i class="fa-solid fa-magnifying-glass" onclick="searchSellOperation()"></i>
         </div>
       </div>
       <div class="body">
-        <button id="openvent" class="addToStock" onclick="openvent()">Nouvelle Opération Vente</button>
+        <button id="openvent" class="addToStock" onclick="alertAddSellOperations()">Nouvelle Opération Vente</button>
 
-    <div class="vent">
+    <div class="vent" id="sell-operation-popup">
         <div class="ventContant">
             <h3>Nouvelle Opération Vente</h3>
             <div class="up">
@@ -105,7 +105,7 @@
             </div>
             <div class="down">
                 <h3>Produit</h3>
-                <table id="productStockTabel">
+                <table id="productSellTabel">
                     <tbody>
                       
                     </tbody>
@@ -115,13 +115,13 @@
                       <option value="" disabled selected>Choisir un produit</option>
                     </select>
                     <input class="input2" type="number" id="produitQuantity" min="0" placeholder="Saisir la Quantité">
-                    <button class="confirm" id="addproductToStockList" onclick="addProductToStockList()">ajouter</button>
+                    <button class="confirm" id="addproductToStockList" onclick="addProdactToTable()">ajouter</button>
 
                 </div>
             </div>
 
             <div class="btn">
-                <button class="cancel" id="cancelButton" onclick="closevent()">Annuler</button>
+                <button class="cancel" id="cancelButton" onclick="closeAleartAddSellOperations()">Annuler</button>
                 <button class="confirm" id="confirmButton" onclick="addSellOperation()">Confirmer</button>
             </div>
         </div>
@@ -138,8 +138,11 @@
         </table>
       </div>
     </section>
-    <script src="/apis/products-api.js"></script>
-    <script src="/apis/vents-api.js"></script>
+    <script src="/apis/products.api.js"></script>
+    <script src="/apis/vents.api.js"></script>
+    <script src="/rander/vent.render.js"></script>
+    <script src="/validators/vent.validator.js"></script>
+    <script src="/services/vent.service.js"></script>
     <script src="vent.js"></script>
   </body>
 </html>

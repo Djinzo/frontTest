@@ -583,3 +583,8 @@ td{
   background:  rgb(2, 174, 2) ;
   transition: 0.7s;
 }
+
+
+.error{
+  color : red
+}

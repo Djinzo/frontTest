@@ -496,3 +496,7 @@ tr td {
 .cancel:hover {
   background-color: #d89691;
 }
+
+.error{
+  color : red
+}
